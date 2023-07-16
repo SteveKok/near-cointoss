@@ -1,3 +1,5 @@
+## Getting Started
+
 To run this code, first install NEAR-cli.
 
 ```bash
@@ -29,3 +31,13 @@ To test whether or not the contract had been deployed succesfully, try to make a
 ```bash
 near call cointoss.YOURNAME.testnet flip_coin '{"player_guess":"heads"}' --accountId YOURNAME.testnet --deposit 0.5
 ```
+
+Finally, run the server by:
+
+```bash
+npm run start
+```
+
+## To do
+
+Currently only can successfully call the contract, but user is not informed on the result of the function call.
