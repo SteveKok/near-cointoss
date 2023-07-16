@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+To run this code, first install NEAR-cli.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install -g near-cli
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After that, create an account and login. Your account should be `YOURNAME.testnet`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+near login
+near create-account cointoss.YOURNAME.testnet
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Then, clone this repo and run
 
-## Learn More
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+After that, run these instructions one by one.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+near deploy --accountId cointoss.YOURNAME.testnet --wasmFile contract/build/cointoss-contract.wasm
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To test whether or not the contract had been deployed succesfully, try to make a call
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+near call cointoss.YOURNAME.testnet flip_coin '{"player_guess":"heads"}' --accountId YOURNAME.testnet --deposit 0.5
+```
